@@ -1,0 +1,18 @@
+package Tarea4;
+
+public class Test {
+    public static void main(String[] args) {
+
+        //crear objetos con parámetros
+        Cuenta cuenta1= new Cuenta(123212045, 5000, 12);
+        cuenta1.mostrar(100,50);
+        System.out.println("----------------------------------------");
+
+        Cuenta cuenta2= new Cuenta(1518212045, 9000, 18);
+        cuenta2.mostrar(500,200);
+        System.out.println("----------------------------------------");
+
+        Cuenta cuenta3= new Cuenta(1238124045, 18500, 24);
+        cuenta3.mostrar(1000,350);
+        }
+}

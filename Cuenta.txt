@@ -1,0 +1,81 @@
+package Tarea4;
+
+public class Cuenta {
+
+    int DPI;
+    float saldo;
+    float interes;
+    static long numero_cuenta = 100001;
+
+    //Constructores
+    public Cuenta() {
+    }
+    public Cuenta(int DPI, float saldo, float interes) {
+        this.DPI = DPI;
+        this.saldo = saldo;
+        this.interes = interes;
+    }
+
+    //Metodos setters y getters
+    public static long getNumero_cuenta() {
+        return numero_cuenta++;
+    }
+    public float getDPI() {
+        return DPI;
+    }
+    public float getSaldo() {
+        return saldo;
+    }
+    public float getInteres() {
+        return interes;
+    }
+
+    //Metodo set
+    public void setDPI(int DPI) {
+        this.DPI = DPI;
+    }
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+    public void setInteres(float interes) {
+        this.interes = interes;
+    }
+
+    //actualizar el saldo de la cuenta y operar interes
+    public float actualizarSaldo() {
+        float saldo_nuevo;
+        saldo_nuevo = saldo + (saldo * ((interes / 100) / 365));
+        return saldo_nuevo;
+    }
+
+    //Ingresar cantidad en la cuenta
+    public double ingresar(double cant_ingresada) {
+        double nuevo_monto;
+        nuevo_monto = actualizarSaldo() + cant_ingresada;
+        return nuevo_monto;
+    }
+
+    //retirar cantidad de la cuenta
+    public double retirar(double cant_retiro) {
+        double nuevo_monto = 0;
+        if (this.saldo >= cant_retiro) {
+            nuevo_monto = actualizarSaldo() - cant_retiro;
+        } else {
+            System.out.println("No cuenta con suficiente saldo en su cuenta");
+        }
+        return nuevo_monto;
+    }
+
+    //Método para mostrar todos los datos
+       public void mostrar(double ingresar,double retirar) {
+        System.out.println("Numero de cuenta:" + Cuenta.getNumero_cuenta());
+        System.out.println("Numero de DPI: " + this.DPI);
+        System.out.println("Interes anual:" + this.interes);
+        System.out.println("Saldo actual:" + actualizarSaldo());
+        System.out.println("Saldo despues del ingreso:" + ingresar(ingresar));
+        System.out.println("Saldo despues del retiro:" + retirar(retirar));
+
+    }
+
+
+}
